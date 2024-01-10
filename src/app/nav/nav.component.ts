@@ -7,7 +7,7 @@ import { ModalService } from '../services/modal.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent {
-  constructor(public modal: ModalService) {}
+  constructor(public modal: ModalService) { }
 
   openModal($event: Event) {
     $event.preventDefault();
