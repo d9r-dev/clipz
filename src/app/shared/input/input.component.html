@@ -22,4 +22,10 @@ duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400" 
     Passwords must be at least 8 characters long, have 1 uppercase letter, 1 lower case letter, 1 number, 1 non-alpha
     numeric number.
   </p>
+  <p *ngIf="control.errors?.['noMatch']" class="text-red-400">
+    Passwords do not match.
+  </p>
+  <p *ngIf="control.errors?.['emailTaken']" class="text-red-400">
+    Email is already taken. Please try another email.
+  </p>
 </ng-container>
