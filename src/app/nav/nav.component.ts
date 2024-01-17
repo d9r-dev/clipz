@@ -19,9 +19,4 @@ export class NavComponent {
 		$event.preventDefault();
 		this.modal.toggleModal("auth");
 	}
-
-	async logout($event: Event) {
-		$event.preventDefault();
-		await this.afAuth.signOut();
-	}
 }

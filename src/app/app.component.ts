@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from './services/auth.service';
 
-var x = "lol"
-
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
