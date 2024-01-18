@@ -8,6 +8,7 @@ import firebase from 'firebase/compat/app'
 import { ClipService } from 'src/app/services/clip.service';
 import { Router } from '@angular/router';
 import { FfmpegService } from 'src/app/services/ffmpeg.service';
+import { log } from 'console';
 
 @Component({
   selector: 'app-upload',
@@ -98,7 +99,7 @@ export class UploadComponent implements OnDestroy {
     combineLatest([this.task.percentageChanges(), this.screenshotTask.percentageChanges()]).subscribe((progress) => {
       const [clipProgress, screenshotsProgress] = progress;
 
-      if(!clipProgress || !screenshotsProgress) {
+      if (!clipProgress || !screenshotsProgress) {
         return;
       }
 
@@ -112,12 +113,12 @@ export class UploadComponent implements OnDestroy {
       this.screenshotTask.percentageChanges()
     ]).pipe(
       switchMap(() => forkJoin([
-          screenshotRef.getDownloadURL(),
-          clipRef.getDownloadURL()
-        ]))
-      ).subscribe({
+        screenshotRef.getDownloadURL(),
+        clipRef.getDownloadURL()
+      ]))
+    ).subscribe({
       next: async (urls) => {
-        const [clipURL, screenshotURL] = urls;
+        const [screenshotURL, clipURL] = urls;
 
         const clip = {
           uid: this.user?.uid as string,
