@@ -22,7 +22,7 @@ export class ManageComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe((params: Params) => {
-      this.videoOrder = params['sort'] === "2" ? params['sort'] : 1;
+      this.videoOrder = params['sort'] === "2" ? params['sort'] : "1";
       this.sort$.next(this.videoOrder);
     })
     this.clipService.getUserClips(this.sort$).subscribe(
